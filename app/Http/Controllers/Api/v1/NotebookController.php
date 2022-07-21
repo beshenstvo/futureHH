@@ -7,6 +7,7 @@ use App\Http\Requests\NotebookRequest;
 use App\Http\Resources\NotebookResource;
 use App\Models\Notebook;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class NotebookController extends Controller
 {
@@ -51,9 +52,11 @@ class NotebookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NotebookRequest $request, Notebook $notebook)
     {
-        //
+        $notebook->update($request->validated());
+
+        return new NotebookResource($notebook);
     }
 
     /**
@@ -62,8 +65,10 @@ class NotebookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Notebook $notebook)
     {
-        //
+        $notebook->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

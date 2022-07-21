@@ -22,6 +22,7 @@ class NotebookResource extends JsonResource
             'email' => $this->email,
             'bth' => $this->bth,
             'photo' => $this->photo,
+            'created_at' => date("y-m-d", strtotime($this->created_at))
         ];
     }
 }
