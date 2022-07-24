@@ -17,7 +17,7 @@ npm install
 ```sh
 php artisan migrate
 ```
-Запустим сервер проект:
+Запустим проект:
 ```sh
 php artisan serve
 npm run watch
