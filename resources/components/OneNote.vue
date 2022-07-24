@@ -3,7 +3,7 @@
         <h1>Информация о записи по id: {{ this.$route.params.id }}</h1>
         <hr/>
         <router-link class="btn btn-outline-primary" to='/'>Назад</router-link>
-        <a href="#" class="btn btn-warning m-1">Изменить</a>
+        <router-link class="btn btn-warning m-1" :to="{ path: '/edit/'+ this.$route.params.id}">Изменить</router-link>
         <div class="alert alert-danger" role="alert" v-if="errored">
             Ошибка загрузки данных!
         </div>

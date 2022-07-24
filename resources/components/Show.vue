@@ -2,29 +2,33 @@
     <div class="m-4">
         <h1>Все записи из записной книжки</h1>
         <hr/>
-            <div class='container d-flex flex-wrap'>
-                <div class="card m-4" v-for="note in notes" :key="note.id">
-                    <div class="card-header">
-                        Запись: {{ note.id }}
+        <router-link class="btn btn-outline-primary m-1" to="add">Добавить новую запись</router-link>
+        <div class='container d-flex flex-wrap'>
+            <div class="card m-4" v-for="note in notes" :key="note.id">
+                <div class="card-header">
+                    Запись: {{ note.id }}
+                </div>
+                <div class="card-body ">
+                    <h5 class="card-title" style="text-align: left !important;"><b>ФИО: </b>{{ note.fullname }}</h5>
+                    <div class="p-4 text-center" >
+                        <img :src='note.photo' alt="photo" height="150">
                     </div>
-                    <div class="card-body ">
-                        <h5 class="card-title" style="text-align: left !important;"><b>ФИО: </b>{{ note.fullname }}</h5>
-                        <router-link class="btn btn-outline-primary m-1" :to="{ path: '/oneNote/'+ note.id}">Просмотр данных</router-link>
-                        <a href="#" class="btn btn-outline-danger m-1" v-on:click="rm(note.id)">Удалить</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                    Создано: {{ note.created_at }}
-                    </div>
+                    <router-link class="btn btn-outline-primary m-1" :to="{ path: '/oneNote/'+ note.id}">Просмотр данных</router-link>
+                    <a href="#" class="btn btn-outline-danger m-1" v-on:click="rm(note.id)">Удалить</a>
+                </div>
+                <div class="card-footer text-muted">
+                Создано: {{ note.created_at }}
                 </div>
             </div>
-            <div class="alert alert-danger" role="alert" v-if="errored">
-                Ошибка загрузки данных!
-            </div>
+        </div>
+        <div class="alert alert-danger" role="alert" v-if="errored">
+            Ошибка загрузки данных!
+        </div>
 
-            <div class="d-flex align-items-center" v-if="loading">
-                <strong>Loading...</strong>
-                <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
-            </div>
+        <div class="d-flex align-items-center" v-if="loading">
+            <strong>Loading...</strong>
+            <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+        </div>
     </div>
 </template>
 

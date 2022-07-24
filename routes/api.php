@@ -1,5 +1,6 @@
 <?php
 
+// use App\Http\Controllers\Api\v1\NotebookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResources([
     'notebook' => NotebookController::class
 ]);
+
+Route::post('/add', [App\Http\Controllers\Api\v1\NotebookController::class, 'upload'])->name('notebook.upload');

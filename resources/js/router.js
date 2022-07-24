@@ -1,8 +1,9 @@
 import App from '../components/App.vue';
 import { createRouter, createWebHistory} from 'vue-router';
 import OneNote from '../components/OneNote.vue';
-// import Edit from '../components/Edit.vue';
+import Add from '../components/Add.vue';
 import Show from '../components/Show.vue';
+import Edit from '../components/Edit.vue';
 
 export default createRouter({
     history: createWebHistory(),
@@ -14,6 +15,14 @@ export default createRouter({
         {
             path: '/oneNote/:id',
             component: OneNote
+        },
+        {
+            path: '/add',
+            component: Add,
+        },
+        {
+            path: '/edit/:id',
+            component: Edit,
         },
     ]
 });

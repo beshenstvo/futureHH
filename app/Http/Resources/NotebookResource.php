@@ -21,7 +21,7 @@ class NotebookResource extends JsonResource
             'phone_number' => $this->phone_number,
             'email' => $this->email,
             'bth' => $this->bth,
-            'photo' => $this->photo,
+            'photo' => asset('storage/uploads/'.$this->photo),
             'created_at' => date("y-m-d", strtotime($this->created_at))
         ];
     }
